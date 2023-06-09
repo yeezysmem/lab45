@@ -13,22 +13,22 @@ provider "aws" {
   region  = "eu-north-1"
 }
 
-resource "aws_instance" "newone" {
+resource "aws_instance" "Lab6Instance" {
   ami           = "ami-0ebb6753c095cb52a"
   instance_type = "t4g.nano"
   key_name = "key2"
-  security_groups = [aws_security_group.laba4.name]
+  security_groups = [aws_security_group.lab6.name]
 
   user_data = "${file("init.sh")}"
 
   tags = {
-    Name = "Lab 6 Instance"
+    Name = "Lab6Instance"
   }
 }
 
-resource "aws_security_group" "laba4" {
-  name        = "laba4"
-  description = "laba4"
+resource "aws_security_group" "lab6" {
+  name        = "lab6"
+  description = "lab6"
   vpc_id      = "vpc-0a514b4ea2d4dbdd5"
 
   ingress {
@@ -58,6 +58,6 @@ resource "aws_security_group" "laba4" {
   }
 
   tags = {
-    Name = "laba4"
+    Name = "lab6"
   }
 }
